@@ -10,46 +10,12 @@ We're working on adding
 
 #### Foundation
 
-No available resources yet
-
-##### Conformance
-
-No available resources yet
-
-##### Terminology
-
-No available resources yet
-
-##### Security
-
-No available resources yet
-
-##### Documents
-
-No available resources yet
-
-##### Other
-
-No available resources yet
+| Conformance | Terminology | Security | Documents | Other |
+| ----------- | ----------- | -------- | --------- | ----- |
+| -           | -           | -        | -         | -     |
 
 #### Base
 
-##### Individuals
-
-- [Patient](http://hl7.org/fhir/patient.html)
-
-##### Entities #1
-
-- [Organization](http://hl7.org/fhir/organization.html)
-
-##### Entities #2
-
-No available resources yet
-
-##### Workflow
-
-No available resources yet
-
-##### Management
-
-No available resources yet
+| Individuals                                 | Entities #1                                           | Entities #2 | Workflow | Management |
+| ------------------------------------------- | ----------------------------------------------------- | ----------- | -------- | ---------- |
+| [Patient](http://hl7.org/fhir/patient.html) | [Organization](http://hl7.org/fhir/organization.html) | -           | -        | -          |

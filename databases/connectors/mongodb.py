@@ -8,4 +8,4 @@ MongoDBClient = pymongo.MongoClient(env("MONGODB_CONNECTION_STRING"))
 MongoDB_Base_R4_Database = MongoDBClient["baseR4"]
 
 # Collections
-MongoDB_Base_R4_Patients = MongoDB_Base_R4_Database["patient"]
+MongoDB_Base_R4_Patient = MongoDB_Base_R4_Database["Patient"]

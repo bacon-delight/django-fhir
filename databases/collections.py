@@ -1,3 +1,3 @@
-from databases.connectors.mongodb import MongoDB_Base_R4_Patients
+from databases.connectors.mongodb import MongoDB_Base_R4_Patient
 
-Base_R4_Patients = MongoDB_Base_R4_Patients
+Base_R4_Patient = MongoDB_Base_R4_Patient

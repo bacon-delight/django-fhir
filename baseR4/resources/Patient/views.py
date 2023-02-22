@@ -13,6 +13,8 @@ from utilities import generateID
 # Serializers
 from .serializers import PatientSerializer
 
+# from .models import PatientModel
+
 # Views
 class PatientViews(APIView):
     def get(self, request, format=None):

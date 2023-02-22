@@ -1,7 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 
-# Utilities
+# Data Types
 from .primitives import (
     FHIR_DATATYPE_BOOLEAN,
     FHIR_DATATYPE_STRING,

@@ -1,13 +1,15 @@
 from django.db import models
 from rest_framework import serializers
 
-# Utilities
+# Models & Serializers
 from .Coding import CodingSerializer
+
+# Data Types
 from .primitives import FHIR_DATATYPE_STRING
 
 # https://hl7.org/fhir/datatypes.html#CodeableConcept
 class CodeableConceptModel(models.Model):
-    # coding
+    # coding - Handled by Serializer
     text = FHIR_DATATYPE_STRING()
 
 

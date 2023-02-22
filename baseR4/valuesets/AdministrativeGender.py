@@ -5,8 +5,8 @@ AdministrativeGender_ContentLogicalDefinition = (
 )
 
 AdministrativeGender_Expansion = {
-    "male": {"display": "Male", "definition": "Male."},
-    "female": {"display": "Female", "definition": "Female."},
-    "other": {"display": "Other", "definition": "Other."},
-    "unknown": {"display": "Unknown", "definition": "Unknown."},
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "unknown": "Unknown",
 }

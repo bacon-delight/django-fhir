@@ -1,7 +1,9 @@
 from django.db import models
 
 # Utilities
-from utilities import list_to_iterable_tuple_list, UUID_MAX_LENGTH
+from utilities import list_to_iterable_tuple_list, string_to_tuple, UUID_MAX_LENGTH
+
+# Data Types
 from ...valuesets.AdministrativeGender import AdministrativeGender
 from ...datatypes.primitives import (
     FHIR_DATATYPE_BOOLEAN,
@@ -9,13 +11,14 @@ from ...datatypes.primitives import (
     FHIR_DATATYPE_DATETIME,
     FHIR_DATATYPE_INTEGER,
 )
-
-# Resource Types
-RESOURCE_TYPE_Patient = "Patient"
+from ..types import RESOURCE_TYPE_Patient
 
 # Models
 class PatientModel(models.Model):
     _id = models.CharField(max_length=UUID_MAX_LENGTH, blank=False)
+    resourceType = models.CharField(
+        max_length=7, choices=[string_to_tuple(RESOURCE_TYPE_Patient)], blank=False
+    )
     # identifier - Handled by Serializer
     active = FHIR_DATATYPE_BOOLEAN()
     # name

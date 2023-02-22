@@ -48,6 +48,19 @@ def FHIR_DATATYPE_URI(blank=True):
     )
 
 
+# https://hl7.org/fhir/datatypes.html#instant
+def FHIR_DATATYPE_INSTANT(blank=True):
+    return models.DateTimeField(
+        blank=blank,
+        validators=[
+            RegexValidator(
+                regex="^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
+                message="Instant doesn't adhere to https://hl7.org/fhir/datatypes.html#instant",
+            ),
+        ],
+    )
+
+
 # https://hl7.org/fhir/datatypes.html#date
 def FHIR_DATATYPE_DATE(blank=True):
     return models.DateField(
@@ -83,6 +96,19 @@ def FHIR_DATATYPE_CODE(blank=True):
             RegexValidator(
                 regex="^[^\s]+(\s[^\s]+)*$",
                 message="Code doesn't adhere to https://hl7.org/fhir/datatypes.html#code",
+            ),
+        ],
+    )
+
+
+# https://hl7.org/fhir/datatypes.html#unsignedInt
+def FHIR_DATATYPE_UNSIGNEDINT(blank=True):
+    return models.IntegerField(
+        blank=blank,
+        validators=[
+            RegexValidator(
+                regex="^[0]|([1-9][0-9]*)$",
+                message="Code doesn't adhere to https://hl7.org/fhir/datatypes.html#unsignedInt",
             ),
         ],
     )

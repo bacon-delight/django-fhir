@@ -11,6 +11,7 @@ from ...datatypes.primitives import (
     FHIR_DATATYPE_UNSIGNEDINT,
     FHIR_DATATYPE_URI,
 )
+from ...valuesets.IANA_LinkRelations import IANA_LinkRelations
 
 # Models
 class bundle_entry_model(models.Model):
@@ -20,6 +21,15 @@ class bundle_entry_model(models.Model):
     # search
     # request
     # response
+
+
+class bundle_link_model(models.Model):
+    relation = models.CharField(
+        max_length=25,
+        choices=list_to_iterable_tuple_list(IANA_LinkRelations),
+        blank=True,
+    )
+    url = FHIR_DATATYPE_URI()
 
 
 class BundleModel(models.Model):

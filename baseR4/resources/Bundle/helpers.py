@@ -34,7 +34,6 @@ def create_bundle_entries(resources):
                 "resource": resource,
             }
         )
-        print(resource["_id"])
         if entry.is_valid():
             entries.append(entry.data)
     return entries

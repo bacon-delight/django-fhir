@@ -1,6 +1,9 @@
 from uuid import uuid4
 
+# Variables
+UUID_MAX_LENGTH = 60
 
+# Functions
 def generateID(data):
     """
     Returns a JSON Object with UUID

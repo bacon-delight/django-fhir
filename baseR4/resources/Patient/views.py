@@ -24,10 +24,11 @@ from ..Bundle.serializers import BundleSerializer
 class PatientViews(ViewSet):
     def list(self, request):
         """
-        Returns a Bundle of all available patients
+        Returns a Bundle of all available patients, with/without search query
         """
         query_params = request.query_params.dict()
 
+        # Handle Search Queries
         if query_params:
             # Query Patients
             patients = find_by(
@@ -35,35 +36,30 @@ class PatientViews(ViewSet):
                 options=create_search_options(params=query_params),
             )
 
-            # Create a Bundle
-            bundle = create_bundle(
-                type="searchset",
-                entries=create_bundle_entries(patients),
-                self_link=createURL(
-                    f"{CONTEXT_PATH}/{RESOURCE_TYPE_Patient}", query_params=query_params
-                ),
+            # Create Link
+            self_link = createURL(
+                f"{CONTEXT_PATH}/{RESOURCE_TYPE_Patient}", query_params=query_params
             )
 
-            # Return Response
-            if bundle:
-                return Response(bundle)
-            return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)
-
+        # Handle General Search
         else:
             # Query all Patients
             patients = find_all(collection=Base_R4_Patient)
 
-            # Create a Bundle
-            bundle = create_bundle(
-                type="searchset",
-                entries=create_bundle_entries(patients),
-                self_link=createURL(f"{CONTEXT_PATH}/{RESOURCE_TYPE_Patient}"),
-            )
+            # Create Link
+            self_link = createURL(f"{CONTEXT_PATH}/{RESOURCE_TYPE_Patient}")
 
-            # Return Response
-            if bundle:
-                return Response(bundle)
-            return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)
+        # Create a Bundle
+        bundle = create_bundle(
+            type="searchset",
+            entries=create_bundle_entries(patients),
+            self_link=self_link,
+        )
+
+        # Return Response
+        if bundle:
+            return Response(bundle)
+        return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)
 
     def retrieve(self, request, id):
         """

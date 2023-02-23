@@ -11,7 +11,7 @@ from rest_framework.status import (
 # Database & Utilities
 from databases.operations import find_all, insert_one, find_one, find_by
 from databases.collections import Base_R4_Patient
-from utilities import appendID, createURL
+from common.utilities import appendID, createURL
 from ..Bundle.helpers import create_bundle_entries, create_bundle
 from .search import create_search_options
 from ..types import RESOURCE_TYPE_Patient, CONTEXT_PATH

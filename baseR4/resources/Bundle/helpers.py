@@ -1,4 +1,4 @@
-from utilities import generateID, createURL
+from common.utilities import generateID, createURL
 from .serializers import (
     bundle_entry_serializer,
     bundle_link_serializer,

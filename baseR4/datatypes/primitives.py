@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework import serializers
 from django.core.validators import RegexValidator
 
 # Utilities
@@ -37,6 +38,13 @@ def FHIR_DATATYPE_STRING(blank=True):
                 ),
             ),
         ],
+    )
+
+
+def FHIR_DATATYPE_STRING_LIST(blank=True):
+    return serializers.ListSerializer(
+        child=serializers.CharField(max_length=1024 * 1024),
+        required=blank,
     )
 
 

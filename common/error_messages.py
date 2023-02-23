@@ -6,7 +6,7 @@ def generate_error_message(data_definition=None):
     )
 
 
-def error_message_invalid_choice(data_definition=None):
+def generate_error_message_invalid_choice(data_definition=None):
     return (
         "invalid_choice",
         generate_error_message(data_definition=data_definition)

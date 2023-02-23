@@ -2,11 +2,15 @@ from django.db import models
 from rest_framework import serializers
 
 # Utilities
-from utilities import list_to_iterable_tuple_list
+from common.utilities import list_to_iterable_tuple_list
+from common.error_messages import generate_error_message_invalid_choice
 
 # Data Types
-from .primitives import FHIR_DATATYPE_CODE, FHIR_DATATYPE_URI, FHIR_DATATYPE_STRING
-from ..valuesets.IdentifierUse import IdentifierUse
+from .primitives import FHIR_DATATYPE_URI, FHIR_DATATYPE_STRING
+from ..valuesets.IdentifierUse import (
+    IdentifierUse,
+    IdentifierUse_ContentLogicalDefinition,
+)
 
 # Models & Serializers
 from .CodeableConcept import CodeableConceptSerializer
@@ -33,3 +37,12 @@ class IdentifierSerializer(serializers.ModelSerializer):
     class Meta:
         model = IdentifierModel
         fields = "__all__"
+        extra_kwargs = {
+            "use": {
+                "error_messages": {
+                    generate_error_message_invalid_choice(
+                        data_definition=IdentifierUse_ContentLogicalDefinition,
+                    )
+                }
+            }
+        }

@@ -13,12 +13,11 @@ from databases.operations import find_all, insert_one, find_one, find_by
 from databases.collections import Base_R4_Patient
 from common.utilities import appendID, createURL
 from ..Bundle.helpers import create_bundle_entries, create_bundle
-from .search import create_search_options
+from databases.helpers import create_search_options
 from ..types import RESOURCE_TYPE_Patient, CONTEXT_PATH
 
 # Models & Serializers
 from .serializers import PatientSerializer
-from ..Bundle.serializers import BundleSerializer
 
 # Views
 class PatientViews(ViewSet):

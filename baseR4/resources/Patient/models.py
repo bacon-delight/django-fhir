@@ -1,7 +1,11 @@
 from django.db import models
 
 # Utilities
-from utilities import list_to_iterable_tuple_list, string_to_tuple, UUID_MAX_LENGTH
+from common.utilities import (
+    list_to_iterable_tuple_list,
+    string_to_tuple,
+    UUID_MAX_LENGTH,
+)
 
 # Data Types
 from ...valuesets.AdministrativeGender import AdministrativeGender

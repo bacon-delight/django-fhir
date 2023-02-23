@@ -1,7 +1,11 @@
 from django.db import models
 
 # Utilities
-from utilities import UUID_MAX_LENGTH, string_to_tuple, list_to_iterable_tuple_list
+from common.utilities import (
+    UUID_MAX_LENGTH,
+    string_to_tuple,
+    list_to_iterable_tuple_list,
+)
 
 # Data Types
 from ..types import RESOURCE_TYPE_Bundle

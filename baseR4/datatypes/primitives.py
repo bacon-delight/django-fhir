@@ -1,5 +1,9 @@
 from django.db import models
+from rest_framework import serializers
 from django.core.validators import RegexValidator
+
+# Utilities
+from common.error_messages import generate_error_message
 
 # https://hl7.org/fhir/datatypes.html#boolean
 def FHIR_DATATYPE_BOOLEAN(blank=True):
@@ -13,7 +17,9 @@ def FHIR_DATATYPE_INTEGER(blank=True):
         validators=[
             RegexValidator(
                 regex="^[0]|[-+]?[1-9][0-9]*$",
-                message="Integer doesn't adhere to https://hl7.org/fhir/datatypes.html#integer",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#integer"
+                ),
             ),
         ],
     )
@@ -27,9 +33,18 @@ def FHIR_DATATYPE_STRING(blank=True):
         validators=[
             RegexValidator(
                 regex="^[ \r\n\t\S]+$",
-                message="String doesn't adhere to https://hl7.org/fhir/datatypes.html#string",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#string"
+                ),
             ),
         ],
+    )
+
+
+def FHIR_DATATYPE_STRING_LIST(blank=True):
+    return serializers.ListSerializer(
+        child=serializers.CharField(max_length=1024 * 1024),
+        required=blank,
     )
 
 
@@ -42,7 +57,9 @@ def FHIR_DATATYPE_URI(blank=True):
         validators=[
             RegexValidator(
                 regex="^\S*$",
-                message="String doesn't adhere to https://hl7.org/fhir/datatypes.html#uri",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#uri"
+                ),
             ),
         ],
     )
@@ -68,7 +85,9 @@ def FHIR_DATATYPE_DATE(blank=True):
         validators=[
             RegexValidator(
                 regex="^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-                message="Date doesn't adhere to https://hl7.org/fhir/datatypes.html#date",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#date"
+                ),
             ),
         ],
     )
@@ -81,7 +100,9 @@ def FHIR_DATATYPE_DATETIME(blank=True):
         validators=[
             RegexValidator(
                 regex="^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-                message="DateTime doesn't adhere to https://hl7.org/fhir/datatypes.html#dateTime",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#dateTime"
+                ),
             ),
         ],
     )
@@ -95,7 +116,9 @@ def FHIR_DATATYPE_CODE(blank=True):
         validators=[
             RegexValidator(
                 regex="^[^\s]+(\s[^\s]+)*$",
-                message="Code doesn't adhere to https://hl7.org/fhir/datatypes.html#code",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#code"
+                ),
             ),
         ],
     )
@@ -108,7 +131,9 @@ def FHIR_DATATYPE_UNSIGNEDINT(blank=True):
         validators=[
             RegexValidator(
                 regex="^[0]|([1-9][0-9]*)$",
-                message="Code doesn't adhere to https://hl7.org/fhir/datatypes.html#unsignedInt",
+                message=generate_error_message(
+                    data_definition="https://hl7.org/fhir/datatypes.html#unsignedInt"
+                ),
             ),
         ],
     )

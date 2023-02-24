@@ -14,6 +14,7 @@ from ...datatypes.primitives import (
     FHIR_DATATYPE_DATE,
     FHIR_DATATYPE_DATETIME,
     FHIR_DATATYPE_INTEGER,
+    FHIR_DATATYPE_STRING,
 )
 from ..types import RESOURCE_TYPE_Patient
 
@@ -35,8 +36,8 @@ class PatientModel(models.Model):
     birthDate = FHIR_DATATYPE_DATE()
     deceasedBoolean = FHIR_DATATYPE_BOOLEAN()
     deceasedDateTime = FHIR_DATATYPE_DATETIME()
-    # address
-    # maritalStatus
+    # address - Handled by Serializer
+    # maritalStatus - Handled by Serializer
     multipleBirthBoolean = FHIR_DATATYPE_BOOLEAN()
     multipleBirthInteger = FHIR_DATATYPE_INTEGER()
     # photo

@@ -6,6 +6,7 @@ from rest_framework.status import (
     HTTP_500_INTERNAL_SERVER_ERROR,
     HTTP_404_NOT_FOUND,
 )
+from drf_yasg.utils import swagger_auto_schema
 
 # Database & Utilities
 from databases.operations import find_all, insert_one, find_one, find_by
@@ -17,12 +18,15 @@ from ..types import RESOURCE_TYPE_Patient, CONTEXT_PATH
 
 # Models & Serializers
 from .serializers import PatientSerializer
+from .query import PatientQuerySerializer
 
 # Views
 class PatientViews(ViewSet):
+    @swagger_auto_schema(query_serializer=PatientQuerySerializer)
     def list(self, request):
         """
         Returns a Bundle of all available patients, with/without search query
+
         """
         query_params = request.query_params.dict()
 
@@ -59,6 +63,7 @@ class PatientViews(ViewSet):
             return Response(bundle)
         return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @swagger_auto_schema()
     def retrieve(self, request, id):
         """
         Retrieves a particular patient
@@ -69,6 +74,7 @@ class PatientViews(ViewSet):
             return Response(patient)
         return Response(status=HTTP_404_NOT_FOUND)
 
+    @swagger_auto_schema(request_body=PatientSerializer)
     def create(self, request, format=None):
         """
         Creates a new patient

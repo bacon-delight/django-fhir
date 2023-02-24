@@ -48,3 +48,7 @@ We're working on adding new resources as soon as possible. Below are the resourc
 - Docker Compose
 - Support RDBMS
 - Support MongoDB
+
+### Development Notes
+
+- Please update `requirements.txt` using `pip list --format=freeze > requirements.txt`

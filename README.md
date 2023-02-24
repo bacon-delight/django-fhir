@@ -21,9 +21,9 @@ We're working on adding new resources as soon as possible. Below are the resourc
 
 #### Base
 
-| Individuals                                 | Entities #1                                           | Entities #2 | Workflow | Management |
-| ------------------------------------------- | ----------------------------------------------------- | ----------- | -------- | ---------- |
-| [Patient](http://hl7.org/fhir/patient.html) | [Organization](http://hl7.org/fhir/organization.html) | -           | -        | -          |
+| Individuals                                 | Entities #1 | Entities #2 | Workflow | Management |
+| ------------------------------------------- | ----------- | ----------- | -------- | ---------- |
+| [Patient](http://hl7.org/fhir/patient.html) | -           | -           | -        | -          |
 
 #### Clinical
 

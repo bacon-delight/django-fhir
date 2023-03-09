@@ -26,7 +26,7 @@ class EncounterSerializer(serializers.ModelSerializer):
     address = AddressSerializer(many=True, required=False)
     period = PeriodSerializer(many=False, required=False)
     statusHistory = statusHistorySerializer(many=True, required=false)
-    length = DurationSerializer(many=False, required=false)
+    #length = DurationSerializer(many=False, required=false)
     
     class Meta:
         model = EncounterModel

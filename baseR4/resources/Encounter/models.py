@@ -7,6 +7,8 @@ from common.utilities import (
     UUID_MAX_LENGTH,
 )
 
+#value sets
+from ...valuesets.EncounterStatus import EncounterStatus
 # Data Types
 from ...datatypes.primitives import (
     FHIR_DATATYPE_BOOLEAN,
@@ -26,11 +28,10 @@ class EncounterModel(models.Model):
     # identifier - Handled by Serializer
     # name
     # telecom
+    
     status = models.CharField(
         max_length=7,
         choices=list_to_iterable_tuple_list(EncounterStatus),
         blank=True,
     )
-
-    
   

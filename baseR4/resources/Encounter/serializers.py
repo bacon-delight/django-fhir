@@ -27,6 +27,7 @@ class EncounterSerializer(serializers.ModelSerializer):
     period = PeriodSerializer(many=False, required=False)
     statusHistory = statusHistorySerializer(many=True, required=false)
     length = DurationSerializer(many=False, required=false)
+    
     class Meta:
         model = EncounterModel
         fields = "__all__"

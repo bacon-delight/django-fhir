@@ -17,7 +17,7 @@ from databases.helpers import create_search_options
 from ..types import RESOURCE_TYPE_Encounter, CONTEXT_PATH
 
 # Models & Serializers
-from .serializers import EncounterSerializer
+#from .serializers import EncounterSerializer
 
 # Views
 class EncounterViews(ViewSet):
@@ -70,10 +70,9 @@ class EncounterViews(ViewSet):
             return Response(encounter)
         return Response(status=HTTP_404_NOT_FOUND)
 
+"""
     def create(self, request, format=None):
-        """
-        Creates a new encounter
-        """
+       
         # Parse JSON Data
         data = JSONParser().parse(request)
 
@@ -81,10 +80,11 @@ class EncounterViews(ViewSet):
         data = appendID(data=data)
 
         # Initializer serializer and validate the payload
-        serializer = EncounterSerializer(data=data)
+       serializer = EncounterSerializer(data=data)
         if serializer.is_valid():
             insert_one(collection=Base_R4_Encounter, document=serializer.data)
             return Response(serializer.data)
 
         # Return Error
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+"""

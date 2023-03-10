@@ -9,3 +9,4 @@ MongoDB_Base_R4_Database = MongoDBClient["baseR4"]
 
 # Collections
 MongoDB_Base_R4_Patient = MongoDB_Base_R4_Database["Patient"]
+MongoDB_Base_R4_Encounter = MongoDB_Base_R4_Database["Encounter"]
